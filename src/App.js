@@ -1,24 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useSearchParams
+} from 'react-router-dom';
+
+function Add() {
+  const [searchParams] = useSearchParams();
+  const x = parseFloat(searchParams.get('x'));
+  const y = parseFloat(searchParams.get('y'));
+  return <h2>Wynik: {x + y}</h2>;
+}
+
+function Sub() {
+  const [searchParams] = useSearchParams();
+  const x = parseFloat(searchParams.get('x'));
+  const y = parseFloat(searchParams.get('y'));
+  return <h2>Wynik: {x - y}</h2>;
+}
+
+function Mul() {
+  const [searchParams] = useSearchParams();
+  const x = parseFloat(searchParams.get('x'));
+  const y = parseFloat(searchParams.get('y'));
+  return <h2>Wynik: {x * y}</h2>;
+}
+
+function Div() {
+  const [searchParams] = useSearchParams();
+  const x = parseFloat(searchParams.get('x'));
+  const y = parseFloat(searchParams.get('y'));
+  return <h2>Wynik: {x / y}</h2>;
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <Routes>
+          <Route path="add" element={<Add />} />
+          <Route path="sub" element={<Sub />} />
+          <Route path="mul" element={<Mul />} />
+          <Route path="div" element={<Div />} />
+        </Routes>
+      </Router>
   );
 }
 
